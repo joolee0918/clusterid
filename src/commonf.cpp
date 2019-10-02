@@ -51,7 +51,7 @@ double dAMH(NumericVector u, double rho, bool logf){
 }
 
 
-NumericVector vdAMH(NumericVector u1, NumericVector u2, double rho, bool logf){
+NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool logf){
   NumericVector res;
   if(rho == 0) {
     res.fill(1);
@@ -164,7 +164,7 @@ double pFrank(NumericVector u, double rho){
     t2=-log1p(exp(-rho) * expm1(rho-u[1]*rho)/expm1(-rho));
     res = -log1mexp(t1+t2-log1mexp(rho))/rho;
   } else {
-    out[j] =-1/rho * log(1 + exp(-(-log((exp(-rho * u[0]) - 1)/(exp(-rho) - 1)) + -log((exp(-rho * u[1]) - 1)/(exp(-rho) - 1)))) * (exp(-rho) - 1));
+    res =-1/rho * log(1 + exp(-(-log((exp(-rho * u[0]) - 1)/(exp(-rho) - 1)) + -log((exp(-rho * u[1]) - 1)/(exp(-rho) - 1)))) * (exp(-rho) - 1));
   }
 }
 
@@ -180,10 +180,17 @@ double pAMH(NumericVector u, double rho){
   return(res);
 }
 
+double pccopf(NumericVector u, double u0, double rho, int copula){
+  double res=0;
+  if(copula==1) res = pClayton( u, rho/(1+rho));
+  else res = pAMH(u, 1-exp(-u0*rho));
+}
+
+
 double pcopf(NumericVector u, double rho, int copula){
   double res=0;
   if(copula==1) res = pClayton( u, rho);
-  else res = pAMH(u, rho);
+  else res = pFrank(u, rho);
 }
 
 
@@ -310,7 +317,7 @@ double h1(double u1, double u2, double rho, int copula){
     if(copula == 1) {
      res = pow(u1, -rho-1)*pow((pow(u2, -rho) + pow(u1, -rho) -1), -1/rho-1);
     } else{
-     res = -(exp(rho)*(exp(rho*u2)-1.0))/(exp(rho*u1+rho*u2)-exp(rho*u1+theta)-exp(rho*u2+rho)+exp(rho));
+     res = -(exp(rho)*(exp(rho*u2)-1.0))/(exp(rho*u1+rho*u2)-exp(rho*u1+rho)-exp(rho*u2+rho)+exp(rho));
     }
   }
   return(res);
@@ -353,14 +360,15 @@ NumericVector vh1(NumericVector u1, NumericVector u2, double rho, int copula){
 
 NumericVector vhc1(NumericVector u1, NumericVector u2, NumericVector u0, double rho, int copula){
   NumericVector res;
+
   if(rho == 0){
     res = u2;
   }else{
     if(copula == 1) {
-      newrho = rho/(1+rho);
+      double newrho = rho/(1+rho);
       res = pow(u1, -newrho-1)*pow((pow(u2, -newrho) + pow(u1, -newrho) -1), -1/newrho-1);
     } else{
-      newrho = 1-exp(-rho*u0);
+      NumericVector newrho = 1-exp(-rho*u0);
       res =  (u2*(1-newrho*(1-u2)))/pow(1-newrho*(1-u1)*(1-u2), 2);
     }
 
