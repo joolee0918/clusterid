@@ -176,18 +176,16 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
           SA(j,k) =  SAc[comb(k,j)-1];
           fam_del2(j, k) = del2[comb(k,j)];
         }
-        Rcout<<S<<"\n";
-        Rcout<<Sf<<"\n";
 
         if (sum(fam_del2(j,_))==2) {
           tmp11 = dccopf(S(j,_), F0, rho, 1.0, copula) + dcopf(Sf(comb(0,j)-1,_), rho, 1.0, copula) + dcopf(Sf(comb(1,j)-1,_), rho, 1.0, copula);
-          Rcout<<2<<" "<<tmp11<<"\n";
+
         }  else if(sum(fam_del2(j,_))==1) {
           tmp11 = log(hcf(S(j,_), fam_del2(j,_), F0, rho, copula)) + fam_del2(j,0)*dcopf(Sf(comb(0,j)-1,_), rho, 1.0, copula) + fam_del2(j,1)*dcopf(Sf(comb(1,j)-1,_), rho, 1.0, copula);
-          Rcout<<1<<" "<<tmp11<<"\n";
+
         } else {
           tmp11 =  log(pccopf(S(j,_), F0, rho, copula));
-          Rcout<<0<<" "<<tmp11<<"\n";
+
         }
         tmp1 += tmp11/(nr-2);
 
@@ -269,7 +267,6 @@ double loglikFD2_pch_gene(NumericVector par, NumericVector theta, List Y_F, List
   double p = exp(par[5]);
   NumericVector lam01 = exp(par[seq(6, par.size()-1)]);
 
-  Rcout<<alpha<<"\n";
 
   int i, j, j1, j2, k, l, nr, pair_nr;
   int nf = Y_F.size();
