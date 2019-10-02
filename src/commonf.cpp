@@ -205,6 +205,7 @@ double pccopf(NumericVector u, double u0, double rho, int copula){
   double res=0;
   if(copula==1) res = pClayton( u, rho/(1+rho));
   else res = pAMH(u, 1-exp(-u0*rho));
+  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -212,6 +213,7 @@ double pcopf(NumericVector u, double rho, int copula){
   double res=0;
   if(copula==1) res = pClayton( u, rho);
   else res = pFrank(u, rho);
+  return(res);
 }
 
 //[[Rcpp::export()]]
