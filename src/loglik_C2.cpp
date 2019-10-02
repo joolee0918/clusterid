@@ -186,13 +186,7 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
           tmp11 = log(hcf(S(j,_), fam_del2(j,_), F0, rho, copula)) + fam_del2(j,0)*dcopf(Sf(comb(0,j)-1,_), rho, 1.0, copula) + fam_del2(j,1)*dcopf(Sf(comb(1,j)-1,_), rho, 1.0, copula);
           Rcout<<1<<" "<<tmp11<<"\n";
         } else {
-          Rcout<<0<<"\n";
-          Rcout<<S<<"\n";
-          Rcout<<F0<<"\n";
-          Rcout<<rho<<"\n";
-          Rcout<<pccopf(S(j,_), F0, rho, copula)<<"\n";
           tmp11 =  log(pccopf(S(j,_), F0, rho, copula));
-
           Rcout<<0<<" "<<tmp11<<"\n";
         }
         tmp1 += tmp11/(nr-2);
