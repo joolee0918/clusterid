@@ -36,7 +36,7 @@ IntegerVector findInterval(NumericVector x, NumericVector breaks) {
 }
 
 
-
+//[[Rcpp::export()]]
 double dAMH(NumericVector u, double rho, bool logf){
   double res;
   double u1 = u[0];
@@ -50,7 +50,7 @@ double dAMH(NumericVector u, double rho, bool logf){
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool logf){
   NumericVector res;
   int n = u1.size();
@@ -68,6 +68,7 @@ NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool 
   return(res);
 }
 
+//[[Rcpp::export()]]
 double dClayton(NumericVector u, double rho, bool logf){
   double res;
   double u1 = u[0];
@@ -95,7 +96,7 @@ NumericVector vdClayton(NumericVector u1, NumericVector u2, double rho, bool log
 }
 
 
-
+//[[Rcpp::export()]]
 double dFrank(NumericVector u, double rho, bool logf){
   double res;
   double u1 = u[0];
@@ -109,7 +110,7 @@ double dFrank(NumericVector u, double rho, bool logf){
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 NumericVector vdFrank(NumericVector u1, NumericVector u2, double rho, bool logf){
   NumericVector res;
   if(rho == 0) {
@@ -121,6 +122,7 @@ NumericVector vdFrank(NumericVector u1, NumericVector u2, double rho, bool logf)
   return(res);
 }
 
+//[[Rcpp::export()]]
 double dcopf(NumericVector u,  double rho, bool logf, int copula){
   double res=0;
   if(copula==1) {
@@ -129,13 +131,14 @@ double dcopf(NumericVector u,  double rho, bool logf, int copula){
   else res = dFrank(u, rho, logf);
 }
 
-
+//[[Rcpp::export()]]
 NumericVector vdcopf(NumericVector u1, NumericVector u2,  double rho, bool logf, int copula){
   NumericVector res;
   if(copula==1) res = vdClayton(u1, u2, rho, logf);
   else res = vdFrank(u1, u2, rho, logf);
 }
 
+//[[Rcpp::export()]]
 double dccopf(NumericVector u, double u0, double rho, bool logf, int copula){
   double res=0;
   if(copula==1) {
@@ -144,12 +147,14 @@ double dccopf(NumericVector u, double u0, double rho, bool logf, int copula){
   else res = dAMH(u, 1-exp(-rho*u0), logf);
 }
 
+//[[Rcpp::export()]]
 NumericVector vdccopf(NumericVector u1, NumericVector u2, NumericVector u0, double rho, bool logf, int copula){
   NumericVector res;
   if(copula==1) res = vdClayton(u1, u2, rho/(1+rho), logf);
   else res = vdAMH(u1, u2, 1-exp(-rho*u0), logf);
 }
 
+//[[Rcpp::export()]]
 double pClayton(NumericVector u, double rho){
   double res;
   double u1 = u[0];
@@ -162,6 +167,7 @@ double pClayton(NumericVector u, double rho){
   return(res);
 }
 
+//[[Rcpp::export()]]
 double pFrank(NumericVector u, double rho){
   double t1, t2, res;
 
@@ -174,6 +180,7 @@ double pFrank(NumericVector u, double rho){
   }
 }
 
+//[[Rcpp::export()]]
 double pAMH(NumericVector u, double rho){
   double res;
   double u1 = u[0];
@@ -186,20 +193,21 @@ double pAMH(NumericVector u, double rho){
   return(res);
 }
 
+//[[Rcpp::export()]]
 double pccopf(NumericVector u, double u0, double rho, int copula){
   double res=0;
   if(copula==1) res = pClayton( u, rho/(1+rho));
   else res = pAMH(u, 1-exp(-u0*rho));
 }
 
-
+//[[Rcpp::export()]]
 double pcopf(NumericVector u, double rho, int copula){
   double res=0;
   if(copula==1) res = pClayton( u, rho);
   else res = pFrank(u, rho);
 }
 
-
+//[[Rcpp::export()]]
 double hf(NumericVector u, IntegerVector del, double rho, int copula){
 
   double res;
@@ -236,6 +244,7 @@ double hf(NumericVector u, IntegerVector del, double rho, int copula){
   return(res);
 }
 
+//[[Rcpp::export()]]
 double hcf(NumericVector u, IntegerVector del, double u0, double rho, int copula){
 
   double res;
@@ -274,6 +283,7 @@ double hcf(NumericVector u, IntegerVector del, double u0, double rho, int copula
   return(res);
 }
 
+//[[Rcpp::export()]]
 double hf_Clayton(NumericVector u, IntegerVector del, double rho){
 
   int j;
@@ -299,7 +309,7 @@ double hf_Clayton(NumericVector u, IntegerVector del, double rho){
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 double hf_Frank(NumericVector u, IntegerVector del, double theta){
 
   double res;
@@ -312,7 +322,7 @@ double hf_Frank(NumericVector u, IntegerVector del, double theta){
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 double h1(double u1, double u2, double rho, int copula){
 
   double res;
@@ -329,7 +339,7 @@ double h1(double u1, double u2, double rho, int copula){
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 double hc1(double u1, double u2, double u0, double rho, int copula){
 
   double res;
@@ -348,7 +358,7 @@ double hc1(double u1, double u2, double u0, double rho, int copula){
   return(res);
 }
 
-
+//[[Rcpp::export()]]
 NumericVector vh1(NumericVector u1, NumericVector u2, double rho, int copula){
   NumericVector res;
   if(rho == 0){
@@ -364,6 +374,7 @@ NumericVector vh1(NumericVector u1, NumericVector u2, double rho, int copula){
   return(res);
 }
 
+//[[Rcpp::export()]]
 NumericVector vhc1(NumericVector u1, NumericVector u2, NumericVector u0, double rho, int copula){
   NumericVector res;
 

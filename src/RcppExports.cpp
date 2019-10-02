@@ -6,6 +6,309 @@
 
 using namespace Rcpp;
 
+// dAMH
+double dAMH(NumericVector u, double rho, bool logf);
+RcppExport SEXP _clusterid_dAMH(SEXP uSEXP, SEXP rhoSEXP, SEXP logfSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    rcpp_result_gen = Rcpp::wrap(dAMH(u, rho, logf));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vdAMH
+NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool logf);
+RcppExport SEXP _clusterid_vdAMH(SEXP u1SEXP, SEXP u2SEXP, SEXP rhoSEXP, SEXP logfSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    rcpp_result_gen = Rcpp::wrap(vdAMH(u1, u2, rho, logf));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dClayton
+double dClayton(NumericVector u, double rho, bool logf);
+RcppExport SEXP _clusterid_dClayton(SEXP uSEXP, SEXP rhoSEXP, SEXP logfSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    rcpp_result_gen = Rcpp::wrap(dClayton(u, rho, logf));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dFrank
+double dFrank(NumericVector u, double rho, bool logf);
+RcppExport SEXP _clusterid_dFrank(SEXP uSEXP, SEXP rhoSEXP, SEXP logfSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    rcpp_result_gen = Rcpp::wrap(dFrank(u, rho, logf));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vdFrank
+NumericVector vdFrank(NumericVector u1, NumericVector u2, double rho, bool logf);
+RcppExport SEXP _clusterid_vdFrank(SEXP u1SEXP, SEXP u2SEXP, SEXP rhoSEXP, SEXP logfSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    rcpp_result_gen = Rcpp::wrap(vdFrank(u1, u2, rho, logf));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dcopf
+double dcopf(NumericVector u, double rho, bool logf, int copula);
+RcppExport SEXP _clusterid_dcopf(SEXP uSEXP, SEXP rhoSEXP, SEXP logfSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(dcopf(u, rho, logf, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vdcopf
+NumericVector vdcopf(NumericVector u1, NumericVector u2, double rho, bool logf, int copula);
+RcppExport SEXP _clusterid_vdcopf(SEXP u1SEXP, SEXP u2SEXP, SEXP rhoSEXP, SEXP logfSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(vdcopf(u1, u2, rho, logf, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dccopf
+double dccopf(NumericVector u, double u0, double rho, bool logf, int copula);
+RcppExport SEXP _clusterid_dccopf(SEXP uSEXP, SEXP u0SEXP, SEXP rhoSEXP, SEXP logfSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(dccopf(u, u0, rho, logf, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vdccopf
+NumericVector vdccopf(NumericVector u1, NumericVector u2, NumericVector u0, double rho, bool logf, int copula);
+RcppExport SEXP _clusterid_vdccopf(SEXP u1SEXP, SEXP u2SEXP, SEXP u0SEXP, SEXP rhoSEXP, SEXP logfSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< bool >::type logf(logfSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(vdccopf(u1, u2, u0, rho, logf, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pClayton
+double pClayton(NumericVector u, double rho);
+RcppExport SEXP _clusterid_pClayton(SEXP uSEXP, SEXP rhoSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    rcpp_result_gen = Rcpp::wrap(pClayton(u, rho));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pFrank
+double pFrank(NumericVector u, double rho);
+RcppExport SEXP _clusterid_pFrank(SEXP uSEXP, SEXP rhoSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    rcpp_result_gen = Rcpp::wrap(pFrank(u, rho));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pAMH
+double pAMH(NumericVector u, double rho);
+RcppExport SEXP _clusterid_pAMH(SEXP uSEXP, SEXP rhoSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    rcpp_result_gen = Rcpp::wrap(pAMH(u, rho));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pccopf
+double pccopf(NumericVector u, double u0, double rho, int copula);
+RcppExport SEXP _clusterid_pccopf(SEXP uSEXP, SEXP u0SEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(pccopf(u, u0, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pcopf
+double pcopf(NumericVector u, double rho, int copula);
+RcppExport SEXP _clusterid_pcopf(SEXP uSEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(pcopf(u, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hf
+double hf(NumericVector u, IntegerVector del, double rho, int copula);
+RcppExport SEXP _clusterid_hf(SEXP uSEXP, SEXP delSEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type del(delSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(hf(u, del, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hcf
+double hcf(NumericVector u, IntegerVector del, double u0, double rho, int copula);
+RcppExport SEXP _clusterid_hcf(SEXP uSEXP, SEXP delSEXP, SEXP u0SEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type del(delSEXP);
+    Rcpp::traits::input_parameter< double >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(hcf(u, del, u0, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hf_Clayton
+double hf_Clayton(NumericVector u, IntegerVector del, double rho);
+RcppExport SEXP _clusterid_hf_Clayton(SEXP uSEXP, SEXP delSEXP, SEXP rhoSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type del(delSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    rcpp_result_gen = Rcpp::wrap(hf_Clayton(u, del, rho));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hf_Frank
+double hf_Frank(NumericVector u, IntegerVector del, double theta);
+RcppExport SEXP _clusterid_hf_Frank(SEXP uSEXP, SEXP delSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u(uSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type del(delSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(hf_Frank(u, del, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// h1
+double h1(double u1, double u2, double rho, int copula);
+RcppExport SEXP _clusterid_h1(SEXP u1SEXP, SEXP u2SEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< double >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(h1(u1, u2, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hc1
+double hc1(double u1, double u2, double u0, double rho, int copula);
+RcppExport SEXP _clusterid_hc1(SEXP u1SEXP, SEXP u2SEXP, SEXP u0SEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< double >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< double >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(hc1(u1, u2, u0, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vh1
+NumericVector vh1(NumericVector u1, NumericVector u2, double rho, int copula);
+RcppExport SEXP _clusterid_vh1(SEXP u1SEXP, SEXP u2SEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(vh1(u1, u2, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vhc1
+NumericVector vhc1(NumericVector u1, NumericVector u2, NumericVector u0, double rho, int copula);
+RcppExport SEXP _clusterid_vhc1(SEXP u1SEXP, SEXP u2SEXP, SEXP u0SEXP, SEXP rhoSEXP, SEXP copulaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type u1(u1SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u2(u2SEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type u0(u0SEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(vhc1(u1, u2, u0, rho, copula));
+    return rcpp_result_gen;
+END_RCPP
+}
 // hpc
 NumericVector hpc(NumericVector x, NumericVector levels, NumericVector cuts, int logf);
 RcppExport SEXP _clusterid_hpc(SEXP xSEXP, SEXP levelsSEXP, SEXP cutsSEXP, SEXP logfSEXP) {
@@ -247,6 +550,28 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_clusterid_dAMH", (DL_FUNC) &_clusterid_dAMH, 3},
+    {"_clusterid_vdAMH", (DL_FUNC) &_clusterid_vdAMH, 4},
+    {"_clusterid_dClayton", (DL_FUNC) &_clusterid_dClayton, 3},
+    {"_clusterid_dFrank", (DL_FUNC) &_clusterid_dFrank, 3},
+    {"_clusterid_vdFrank", (DL_FUNC) &_clusterid_vdFrank, 4},
+    {"_clusterid_dcopf", (DL_FUNC) &_clusterid_dcopf, 4},
+    {"_clusterid_vdcopf", (DL_FUNC) &_clusterid_vdcopf, 5},
+    {"_clusterid_dccopf", (DL_FUNC) &_clusterid_dccopf, 5},
+    {"_clusterid_vdccopf", (DL_FUNC) &_clusterid_vdccopf, 6},
+    {"_clusterid_pClayton", (DL_FUNC) &_clusterid_pClayton, 2},
+    {"_clusterid_pFrank", (DL_FUNC) &_clusterid_pFrank, 2},
+    {"_clusterid_pAMH", (DL_FUNC) &_clusterid_pAMH, 2},
+    {"_clusterid_pccopf", (DL_FUNC) &_clusterid_pccopf, 4},
+    {"_clusterid_pcopf", (DL_FUNC) &_clusterid_pcopf, 3},
+    {"_clusterid_hf", (DL_FUNC) &_clusterid_hf, 4},
+    {"_clusterid_hcf", (DL_FUNC) &_clusterid_hcf, 5},
+    {"_clusterid_hf_Clayton", (DL_FUNC) &_clusterid_hf_Clayton, 3},
+    {"_clusterid_hf_Frank", (DL_FUNC) &_clusterid_hf_Frank, 3},
+    {"_clusterid_h1", (DL_FUNC) &_clusterid_h1, 4},
+    {"_clusterid_hc1", (DL_FUNC) &_clusterid_hc1, 5},
+    {"_clusterid_vh1", (DL_FUNC) &_clusterid_vh1, 4},
+    {"_clusterid_vhc1", (DL_FUNC) &_clusterid_vhc1, 5},
     {"_clusterid_hpc", (DL_FUNC) &_clusterid_hpc, 4},
     {"_clusterid_Hpc", (DL_FUNC) &_clusterid_Hpc, 4},
     {"_clusterid_ppc", (DL_FUNC) &_clusterid_ppc, 5},
