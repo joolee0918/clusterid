@@ -127,7 +127,7 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
       NumericVector S0 = vppc(X, lam01, cut_F, 0.0, 0.0);
       if(sum(del2)==2) {
         if(copula==1) tmp1 += dClayton(S0, rho, 1.0);
-        else tmp1 += dFrank(S0, rho, 1.0)
+        else tmp1 += dFrank(S0, rho, 1.0);
       }
       else tmp1 += log(hf(S0, del2, rho, copula));
 
@@ -253,7 +253,7 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
 //[[Rcpp::export()]]
 double loglikFD2_pch_gene(NumericVector par, NumericVector theta, List Y_F, List X_F,  NumericMatrix Y_proband, NumericMatrix X_proband,
                      NumericVector Age, NumericVector Cal,   NumericVector cut_F, DataFrame lam03,
-                     Function fgau, Function combn){
+                     Function fgau, Function combn, int copula){
 
  // double theta = exp(par[1]);
   double rho = par[0];
