@@ -41,8 +41,8 @@ loglikFD2_pch <- function(par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, 
     .Call(`_clusterid_loglikFD2_pch`, par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn, copula)
 }
 
-loglikFD2_pch_gene <- function(par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn) {
-    .Call(`_clusterid_loglikFD2_pch_gene`, par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn)
+loglikFD2_pch_gene <- function(par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn, copula) {
+    .Call(`_clusterid_loglikFD2_pch_gene`, par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn, copula)
 }
 
 loglikR_pch <- function(par, cut_F, Y_R, X_R, LAM03R, LAM12R, cutR, fgau) {

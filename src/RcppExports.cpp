@@ -153,8 +153,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // loglikFD2_pch_gene
-double loglikFD2_pch_gene(NumericVector par, NumericVector theta, List Y_F, List X_F, NumericMatrix Y_proband, NumericMatrix X_proband, NumericVector Age, NumericVector Cal, NumericVector cut_F, DataFrame lam03, Function fgau, Function combn);
-RcppExport SEXP _clusterid_loglikFD2_pch_gene(SEXP parSEXP, SEXP thetaSEXP, SEXP Y_FSEXP, SEXP X_FSEXP, SEXP Y_probandSEXP, SEXP X_probandSEXP, SEXP AgeSEXP, SEXP CalSEXP, SEXP cut_FSEXP, SEXP lam03SEXP, SEXP fgauSEXP, SEXP combnSEXP) {
+double loglikFD2_pch_gene(NumericVector par, NumericVector theta, List Y_F, List X_F, NumericMatrix Y_proband, NumericMatrix X_proband, NumericVector Age, NumericVector Cal, NumericVector cut_F, DataFrame lam03, Function fgau, Function combn, int copula);
+RcppExport SEXP _clusterid_loglikFD2_pch_gene(SEXP parSEXP, SEXP thetaSEXP, SEXP Y_FSEXP, SEXP X_FSEXP, SEXP Y_probandSEXP, SEXP X_probandSEXP, SEXP AgeSEXP, SEXP CalSEXP, SEXP cut_FSEXP, SEXP lam03SEXP, SEXP fgauSEXP, SEXP combnSEXP, SEXP copulaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -170,7 +170,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< DataFrame >::type lam03(lam03SEXP);
     Rcpp::traits::input_parameter< Function >::type fgau(fgauSEXP);
     Rcpp::traits::input_parameter< Function >::type combn(combnSEXP);
-    rcpp_result_gen = Rcpp::wrap(loglikFD2_pch_gene(par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn));
+    Rcpp::traits::input_parameter< int >::type copula(copulaSEXP);
+    rcpp_result_gen = Rcpp::wrap(loglikFD2_pch_gene(par, theta, Y_F, X_F, Y_proband, X_proband, Age, Cal, cut_F, lam03, fgau, combn, copula));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -256,7 +257,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_clusterid_pG0", (DL_FUNC) &_clusterid_pG0, 3},
     {"_clusterid_pG", (DL_FUNC) &_clusterid_pG, 3},
     {"_clusterid_loglikFD2_pch", (DL_FUNC) &_clusterid_loglikFD2_pch, 13},
-    {"_clusterid_loglikFD2_pch_gene", (DL_FUNC) &_clusterid_loglikFD2_pch_gene, 12},
+    {"_clusterid_loglikFD2_pch_gene", (DL_FUNC) &_clusterid_loglikFD2_pch_gene, 13},
     {"_clusterid_loglikR_pch", (DL_FUNC) &_clusterid_loglikR_pch, 8},
     {"_clusterid_loglikR_pch_gene", (DL_FUNC) &_clusterid_loglikR_pch_gene, 8},
     {"_clusterid_loglikS_pch", (DL_FUNC) &_clusterid_loglikS_pch, 7},
