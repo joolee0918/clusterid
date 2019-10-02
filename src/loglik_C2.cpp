@@ -244,6 +244,7 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
     tmp7 += -log(sum(w*vdpc(u, lam01, cut_F, 0.0)*vppc(u, LAM03[0], cut[0], 0.0, 0.0)*ppc(C0, LAM12[0], cut[0],  0.0, 0.0)/vppc(u, LAM12[0], cut[0], 0.0, 0.0)));
     rr += tmp1 + tmp2 + tmp3 + tmp5 + tmp6 + tmp7 + tmp8;
     Rcout<<i<<"\n";
+    Rcout<<nr<<"\n";
     Rcout<<tmp1<<"\n";
     Rcout<<tmp2<<"\n";
     Rcout<<tmp3<<"\n";
