@@ -12,12 +12,31 @@ using namespace Rcpp;
 
 
 IntegerVector findInterval(NumericVector x, NumericVector breaks);
+double dAMH(NumericVector u, double rho, bool logf);
+NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool logf);
 double dClayton(NumericVector u, double rho, bool logf);
 NumericVector vdClayton(NumericVector u1, NumericVector u2, double rho, bool logf);
+double dFrank(NumericVector u, double rho, bool logf);
+NumericVector vdFrank(NumericVector u1, NumericVector u2, double rho, bool logf);
+double dcopf(NumericVector u,  double rho, bool logf, int copula);
+NumericVector vdcopf(NumericVector u1, NumericVector u2,  double rho, bool logf, int copula);
+double dccopf(NumericVector u, double u0, double rho, bool logf, int copula);
+NumericVector vdccopf(NumericVector u1, NumericVector u2, NumericVector u0, double rho, bool logf, int copula);
+
 double pClayton(NumericVector u, double rho);
-double hf(NumericVector u, IntegerVector del, int k, int mi, double rho);
-double h1(double u1, double u2, double rho);
-NumericVector vh1(NumericVector u1, NumericVector u2, double rho);
+double pAMH(NumericVector u, double rho);
+double pccopf(NumericVector u, double u0, double rho, int copula);
+double pcopf(NumericVector u, double rho, int copula);
+double hf(NumericVector u, IntegerVector del, double rho, int copula);
+double hcf(NumericVector u, IntegerVector del, double u0, double rho, int copula);
+double hf_Clayton(NumericVector u, IntegerVector del, double rho);
+double hf_Frank(NumericVector u, IntegerVector del, double theta);
+double h1(double u1, double u2, double rho, int copula);
+double hc1(double u1, double u2, double u0, double rho, int copula);
+NumericVector vh1(NumericVector u1, NumericVector u2, double rho, int copula);
+NumericVector vhc1(NumericVector u1, NumericVector u2, NumericVector u0, double rho, int copula);
+
+
 NumericVector cumsum3(NumericVector x);
 NumericVector cumprod3(NumericVector x);
 NumericVector hpc(NumericVector x, NumericVector levels, NumericVector cuts,  int logf);
