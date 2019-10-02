@@ -52,9 +52,11 @@ double dAMH(NumericVector u, double rho, bool logf){
 
 //[[Rcpp::export()]]
 NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool logf){
-  NumericVector res;
+
   int n = u1.size();
+  NumericVector res(n);
   int i;
+
 
   for(i=0; i< n; i++){
   if(rho[i] == 0) {
@@ -83,7 +85,7 @@ double dClayton(NumericVector u, double rho, bool logf){
 }
 
 
-
+//[[Rcpp::export()]]
 NumericVector vdClayton(NumericVector u1, NumericVector u2, double rho, bool logf){
   NumericVector res;
   if(rho == 0) {
@@ -129,6 +131,7 @@ double dcopf(NumericVector u,  double rho, bool logf, int copula){
     res = dClayton(u, rho, logf);
   }
   else res = dFrank(u, rho, logf);
+  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -136,6 +139,7 @@ NumericVector vdcopf(NumericVector u1, NumericVector u2,  double rho, bool logf,
   NumericVector res;
   if(copula==1) res = vdClayton(u1, u2, rho, logf);
   else res = vdFrank(u1, u2, rho, logf);
+  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -145,6 +149,7 @@ double dccopf(NumericVector u, double u0, double rho, bool logf, int copula){
     res = dClayton(u, rho/(1+rho), logf);
   }
   else res = dAMH(u, 1-exp(-rho*u0), logf);
+  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -152,6 +157,7 @@ NumericVector vdccopf(NumericVector u1, NumericVector u2, NumericVector u0, doub
   NumericVector res;
   if(copula==1) res = vdClayton(u1, u2, rho/(1+rho), logf);
   else res = vdAMH(u1, u2, 1-exp(-rho*u0), logf);
+  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -178,6 +184,7 @@ double pFrank(NumericVector u, double rho){
   } else {
     res =-1/rho * log(1 + exp(-(-log((exp(-rho * u[0]) - 1)/(exp(-rho) - 1)) + -log((exp(-rho * u[1]) - 1)/(exp(-rho) - 1)))) * (exp(-rho) - 1));
   }
+  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -276,7 +283,7 @@ double hcf(NumericVector u, IntegerVector del, double u0, double rho, int copula
     if(newrho == 0){
       res = pow(u[0], 1-del[0])*pow(u[1], 1-del[1]);
     }else{
-      res = (u[0]*(1-newrho*(1-u[0])))*(1-del[0])*(u[1]*(1-newrho*(1-u[1])))*(1-del[1])/pow(1-newrho*(1-u[0])*(1-u[1]), 2);
+      res = pow(u[0]*(1-newrho*(1-u[0])), 1-del[0])*pow(u[1]*(1-newrho*(1-u[1])), 1-del[1])/pow(1-newrho*(1-u[0])*(1-u[1]), 2);
     }
   }
 
