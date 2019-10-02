@@ -245,6 +245,14 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
     rr += tmp1 + tmp2 + tmp3 + tmp5 + tmp6 + tmp7 + tmp8;
   }
 
+  Rcout<<tmp1<<"\n";
+  Rcout<<tmp2<<"\n";
+  Rcout<<tmp3<<"\n";
+  Rcout<<tmp5<<"\n";
+  Rcout<<tmp6<<"\n";
+  Rcout<<tmp7<<"\n";
+  Rcout<<tmp8<<"\n";
+
   return(rr);
 }
 
