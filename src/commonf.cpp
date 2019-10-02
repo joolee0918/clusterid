@@ -60,7 +60,7 @@ NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool 
   if(rho[i] == 0) {
     res[i] = 1;
   } else{
-    res[i]  = (-1 + pow(rho[i],2)*(-1 + u1[i] + u2[i] - u1[i]*u2[i]) - rho*(-2 + u1[i] + u2[i] + u1[i]*u2[i])) / pow(-1 + rho*(-1 + u1)*(-1 + u2),3);
+    res[i]  = (-1 + pow(rho[i],2)*(-1 + u1[i] + u2[i] - u1[i]*u2[i]) - rho[i]*(-2 + u1[i] + u2[i] + u1[i]*u2[i])) / pow(-1 + rho[i]*(-1 + u1[i])*(-1 + u2[i]),3);
   }
   if(logf == 1.0) res[i] = log(res[i]);
   }
