@@ -176,6 +176,8 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
           SA(j,k) =  SAc[comb(k,j)-1];
           fam_del2(j, k) = del2[comb(k,j)];
         }
+        Rcout<<S<<"\n";
+        Rcout<<Sf<<"\n";
 
         if (sum(fam_del2(j,_))==2) {
           tmp11 = dccopf(S(j,_), F0, rho, 1.0, copula) + dcopf(Sf(comb(0,j)-1,_), rho, 1.0, copula) + dcopf(Sf(comb(1,j)-1,_), rho, 1.0, copula);
@@ -185,6 +187,8 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
           Rcout<<1<<" "<<tmp11<<"\n";
         } else {
           tmp11 =  log(pccopf(S(j,_), F0, rho, copula));
+
+          Rcout<<F0<<"\n";
           Rcout<<0<<" "<<tmp11<<"\n";
         }
         tmp1 += tmp11/(nr-2);
