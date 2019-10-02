@@ -53,12 +53,18 @@ double dAMH(NumericVector u, double rho, bool logf){
 
 NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool logf){
   NumericVector res;
-  if(rho == 0) {
-    res.fill(1);
+  int n = u1.size();
+  int i;
+
+  for(i=0; i< n; i++){
+  if(rho[i] == 0) {
+    res[i] = 1;
   } else{
-    res  = (-1 + pow(rho,2)*(-1 + u1 + u2 - u1*u2) - rho*(-2 + u1 + u2 + u1*u2)) / pow(-1 + rho*(-1 + u1)*(-1 + u2),3);
+    res[i]  = (-1 + pow(rho[i],2)*(-1 + u1[i] + u2[i] - u1[i]*u2[i]) - rho*(-2 + u1[i] + u2[i] + u1[i]*u2[i])) / pow(-1 + rho*(-1 + u1)*(-1 + u2),3);
   }
-  if(logf == 1.0) res = log(res);
+  if(logf == 1.0) res[i] = log(res[i]);
+  }
+
   return(res);
 }
 
@@ -351,7 +357,7 @@ NumericVector vh1(NumericVector u1, NumericVector u2, double rho, int copula){
     if(copula == 1) {
       res = pow(u1, -rho-1)*pow((pow(u2, -rho) + pow(u1, -rho) -1), -1/rho-1);
     } else{
-      res = -(exp(rho)*(exp(rho*u2)-1.0))/(exp(rho*u1+rho*u2)-exp(rho*u1+theta)-exp(rho*u2+rho)+exp(rho));
+      res = -(exp(rho)*(exp(rho*u2)-1.0))/(exp(rho*u1+rho*u2)-exp(rho*u1+rho)-exp(rho*u2+rho)+exp(rho));
     }
 
   }
