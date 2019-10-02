@@ -495,10 +495,10 @@ double loglikFD2_pch_gene(NumericVector par, NumericVector theta, List Y_F, List
        NumericVector SS4 = NumericVector::create(SAg1[j1-1], SAg1[j2-1]);
 
 
-      tmp8 -= log(ff1(j1, j2, px, vpx,vpx2, alpha, lam01, rho, rho, exam_age,cut_F, LAM03,  LAM12, cut1, cut2, IG1,  SS1, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula)
-                    + ff1(j1, j2, px, vpx,vpx2, alpha, lam01, rho, rho, exam_age,cut_F, LAM03, LAM12, cut1, cut2, IG2,  SS2, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula)
-                    + ff1(j1, j2, px, vpx,vpx2, alpha, lam01, rho, rho, exam_age,cut_F, LAM03, LAM12, cut1, cut2, IG3,  SS3, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula)
-                    + ff1(j1, j2, px, vpx,vpx2, alpha, lam01, rho, rho, exam_age,cut_F, LAM03, LAM12, cut1, cut2, IG4,  SS4, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula))/(nr-2);
+      tmp8 -= log(ff1(j1, j2, px, vpx,vpx2, alpha, lam01,  rho, exam_age,cut_F, LAM03,  LAM12, cut1, cut2, IG1,  SS1, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula)
+                    + ff1(j1, j2, px, vpx,vpx2, alpha, lam01, rho, exam_age,cut_F, LAM03, LAM12, cut1, cut2, IG2,  SS2, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula)
+                    + ff1(j1, j2, px, vpx,vpx2, alpha, lam01,  rho, exam_age,cut_F, LAM03, LAM12, cut1, cut2, IG3,  SS3, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula)
+                    + ff1(j1, j2, px, vpx,vpx2, alpha, lam01,  rho, exam_age,cut_F, LAM03, LAM12, cut1, cut2, IG4,  SS4, fam_rel, pg0, p, w1, w2, u1, u2, ww1, ww2, uu1, uu2, copula))/(nr-2);
 
       }
 
