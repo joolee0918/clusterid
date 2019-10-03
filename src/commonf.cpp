@@ -64,9 +64,9 @@ NumericVector vdAMH(NumericVector u1, NumericVector u2, NumericVector rho, bool 
   } else{
     res[i]  = (-1 + pow(rho[i],2)*(-1 + u1[i] + u2[i] - u1[i]*u2[i]) - rho[i]*(-2 + u1[i] + u2[i] + u1[i]*u2[i])) / pow(-1 + rho[i]*(-1 + u1[i])*(-1 + u2[i]),3);
   }
-  if(logf == 1.0) res[i] = log(res[i]);
-  }
 
+  }
+  if(logf == 1.0) res = log(res);
   return(res);
 }
 
@@ -213,7 +213,6 @@ double pcopf(NumericVector u, double rho, int copula){
   double res=0;
   if(copula==1) res = pClayton( u, rho);
   else res = pFrank(u, rho);
-  return(res);
 }
 
 //[[Rcpp::export()]]
@@ -246,7 +245,7 @@ double hf(NumericVector u, IntegerVector del, double rho, int copula){
       res = pow(u[0], 1-del[0])*pow(u[1], 1-del[1]);
     }else{
 
-      res = -(exp(rho)*(exp(rho*u[0])*(1-del[0]) + exp(rho*u[1])*(1-del[1])-1.0))/(exp(rho*u[0]+rho*u[1])-exp(rho*u[1]+rho)-exp(rho*u[2]+rho)+exp(rho));
+      res = -(exp(rho)*(exp(rho*u[0])*(1-del[0]) + exp(rho*u[1])*(1-del[1])-1.0))/(exp(rho*u[0]+rho*u[1])-exp(rho*u[0]+rho)-exp(rho*u[1]+rho)+exp(rho));
     }
   }
 
@@ -326,7 +325,7 @@ double hf_Frank(NumericVector u, IntegerVector del, double theta){
   if(theta == 0){
     res = pow(u[0], 1-del[0])*pow(u[1], 1-del[1]);
   }else{
-    res = -(exp(theta)*(exp(theta*u[0])*(1-del[0]) + exp(theta*u[1])*(1-del[1])-1.0))/(exp(theta*u[0]+theta*u[1])-exp(theta*u[1]+theta)-exp(theta*u[2]+theta)+exp(theta));
+    res = -(exp(theta)*(exp(theta*u[0])*(1-del[0]) + exp(theta*u[1])*(1-del[1])-1.0))/(exp(theta*u[0]+theta*u[1])-exp(theta*u[0]+theta)-exp(theta*u[1]+theta)+exp(theta));
   }
   return(res);
 }
