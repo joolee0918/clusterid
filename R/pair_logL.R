@@ -38,9 +38,13 @@ pair.logL <-	function( par, Y.fam, X.fam,  Y.proband, X.proband, Y.R, X.R, Y.S,
     if(is.null(G)) auxtmp2 <- loglikS_pch(par,  cut, Y.S, LAM03.S, LAM12.S, cut.S, gauleg.f)
     else auxtmp2 <- loglikS_pch_gene(par,  cut, Y.S, LAM03.S, LAM12.S, cut.S, gauleg.f)
   }
+
+  print(par)
+  print(c(res, auxtmp1, auxtmp2, par))
   res = res + auxtmp1 + auxtmp2
 
-  print(res)
+
+
   return(-res)
 }
 

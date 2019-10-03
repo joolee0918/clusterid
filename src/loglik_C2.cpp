@@ -25,7 +25,6 @@ double loglikFD2_pch(NumericVector par, NumericVector theta, List Y_F, List X_F,
 
  // double theta = exp(par[1]);
   double rho = par[0];
-  double newrho;
   NumericVector lam01 = exp(par[seq(4, par.size()-1)]);
 
 
@@ -262,7 +261,6 @@ double loglikFD2_pch_gene(NumericVector par, NumericVector theta, List Y_F, List
 
  // double theta = exp(par[1]);
   double rho = par[0];
-  double newrho = rho/(1+rho);
   double alpha = par[4];
   double p = exp(par[5]);
   NumericVector lam01 = exp(par[seq(6, par.size()-1)]);
