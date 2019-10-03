@@ -110,8 +110,8 @@ nr <- nrow(Y.R)
 
 
 
-pairle <- optim(par, pair.logL, Y.fam = Y.fam, X.fam = X.fam,  Y.proband = Y.proband, X.proband = data.proband, Y.R = Y.R, X.R = data.R, Y.S = Y.S,
-                outdata.F0 = outdata.F0, outdata.proband = outdata.proband[, first.visit.age.R], cut = cut, R.fR = R.fR, A.fR = A.fR, cut.R = cut.R, R.fS = R.fS, A.fS = A.fS, cut.S = cut.S, G = G, Age = Age, Cal = Cal, design = design, full = full, no.death = no.death, copula = copula,  method = "BFGS", hessian = TRUE, control=list(maxit=1))
+#pairle <- optim(par, pair.logL, Y.fam = Y.fam, X.fam = X.fam,  Y.proband = Y.proband, X.proband = data.proband, Y.R = Y.R, X.R = data.R, Y.S = Y.S,
+#                outdata.F0 = outdata.F0, outdata.proband = outdata.proband[, first.visit.age.R], cut = cut, R.fR = R.fR, A.fR = A.fR, cut.R = cut.R, R.fS = R.fS, A.fS = A.fS, cut.S = cut.S, G = G, Age = Age, Cal = Cal, design = design, full = full, no.death = no.death, copula = copula,  method = "BFGS", hessian = TRUE, control=list(maxit=1))
 
 #parameter.pair <- exp(pairle$par)
 
@@ -124,10 +124,10 @@ pairle <- optim(par, pair.logL, Y.fam = Y.fam, X.fam = X.fam,  Y.proband = Y.pro
 
 #  }else{
        if(is.null(G)){
-      score_i <- sapply(1:nf, function(i) numDeriv::grad(func=loglikFD2_pch_R,  x=pairle$par, Y_F = Y.fam[i], X_F = X.fam[i], Y_proband = t(as.matrix(Y.proband[i,])), X_proband = t(as.matrix(data.proband[i,])),
+      score_i <- sapply(1:nf, function(i) numDeriv::grad(func=loglikFD2_pch_R,  x=par, Y_F = Y.fam[i], X_F = X.fam[i], Y_proband = t(as.matrix(Y.proband[i,])), X_proband = t(as.matrix(data.proband[i,])),
                                                                          Age = Age, Cal = Cal, cut_F = cut, lam03 = lam03, fgau = gauleg.f, combn = utils::combn, copula = copula))
     }else{
-      score_i <- sapply(1:nf, function(i) numDeriv::grad(func=loglikFD2_pch_gene_R,  x=pairle$par, Y_F = Y.fam[i], X_F = X.fam[i], Y_proband = t(as.matrix(Y.proband[i,])), X_proband = t(as.matrix(data.proband[i,])),
+      score_i <- sapply(1:nf, function(i) numDeriv::grad(func=loglikFD2_pch_gene_R,  x=par, Y_F = Y.fam[i], X_F = X.fam[i], Y_proband = t(as.matrix(Y.proband[i,])), X_proband = t(as.matrix(data.proband[i,])),
                                                          Age = Age, Cal = Cal, cut_F = cut, lam03 = lam03, fgau = gauleg.f, combn = utils::combn, copula = copula))
 
     }
@@ -135,19 +135,19 @@ pairle <- optim(par, pair.logL, Y.fam = Y.fam, X.fam = X.fam,  Y.proband = Y.pro
  # }
 score_r <- matrix(0, nrow=nr, ncol=2)
  if(is.null(G)){
-    score_r <- sapply(1:nr, function(i) numDeriv::grad(loglikR_pch_R, x=pairle$par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(data.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f))
+    score_r <- sapply(1:nr, function(i) numDeriv::grad(loglikR_pch_R, x=par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(data.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f))
 
   }else{
-  score_r <- sapply(1:nr, function(i) numDeriv::grad(loglikR_pch_gene_R, x=pairle$par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(data.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f))
+  score_r <- sapply(1:nr, function(i) numDeriv::grad(loglikR_pch_gene_R, x=par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(data.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f))
 }
 
 
 if(!is.null(outdata.S)) {
     if(is.null(G)){
-      score_s <- sapply(1:ns, function(i) numDeriv::grad(loglikS_pch_R, x=pairle$par,  cut_F = cut, Y_S = t(as.matrix(Y.S[i,])), R.fS = R.fS[[i]], A.fS = A.fS[[i]],  cutS = cut.S[i], fgau = gauleg.f))
+      score_s <- sapply(1:ns, function(i) numDeriv::grad(loglikS_pch_R, x=par,  cut_F = cut, Y_S = t(as.matrix(Y.S[i,])), R.fS = R.fS[[i]], A.fS = A.fS[[i]],  cutS = cut.S[i], fgau = gauleg.f))
 
     }else{
-    score_s <- sapply(1:ns, function(i) numDeriv::grad(loglikS_pch_gene_R, x=pairle$par,  cut_F = cut, Y_S = t(as.matrix(Y.S[i,])) ,R.fS = R.fS[[i]], A.fS = A.fS[[i]], cutS = cut.S[i], fgau = gauleg.f))
+    score_s <- sapply(1:ns, function(i) numDeriv::grad(loglikS_pch_gene_R, x=par,  cut_F = cut, Y_S = t(as.matrix(Y.S[i,])) ,R.fS = R.fS[[i]], A.fS = A.fS[[i]], cutS = cut.S[i], fgau = gauleg.f))
     }
 }
 
