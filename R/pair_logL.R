@@ -44,22 +44,6 @@ pair.logL <-	function( par, Y.fam, X.fam,  Y.proband, X.proband, Y.R, X.R, Y.S,
   res = res + auxtmp1 + auxtmp2
   print(res)
 
-  res1 = res2 = res3 = 0
-  nf <- length(Y.fam)
-  for(i in 1:nf){
-    res1 = res1 +  loglikFD2_pch_gene_R(par, Y_F = Y.fam[i], X_F = X.fam[i], Y_proband = t(as.matrix(Y.proband[i,])), X_proband = t(as.matrix(X.proband[i,])),
-                         Age = Age, Cal = Cal, cut_F = cut, lam03 = lam03, fgau = gauleg.f, combn = utils::combn, copula = copula)
-  }
-
-  for(i in 1:nr){
-    res2 = res2 + loglikR_pch_gene_R(par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(X.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f)
-  }
-
-  for(i in 1:ns){
-    res3 = res3 + loglikS_pch_gene_R( par,  cut_F = cut, Y_S = t(as.matrix(Y.S[i,])) ,R.fS = R.fS[[i]], A.fS = A.fS[[i]], cutS = cut.S[i], fgau = gauleg.f)
-
-  }
-  print(c(res1, res2, res3))
   return(-res)
 }
 
