@@ -111,7 +111,7 @@ nr <- nrow(Y.R)
 
 
 pairle <- optim(par, pair.logL, Y.fam = Y.fam, X.fam = X.fam,  Y.proband = Y.proband, X.proband = data.proband, Y.R = Y.R, X.R = data.R, Y.S = Y.S,
-                outdata.F0 = outdata.F0, outdata.proband = outdata.proband[, first.visit.age.R], cut = cut, R.fR = R.fR, A.fR = A.fR, cut.R = cut.R, R.fS = R.fS, A.fS = A.fS, cut.S = cut.S, G = G, Age = Age, Cal = Cal, design = design, full = full, no.death = no.death, copula = copula,  method = "BFGS", hessian = TRUE)
+                outdata.F0 = outdata.F0, outdata.proband = outdata.proband[, first.visit.age.R], cut = cut, R.fR = R.fR, A.fR = A.fR, cut.R = cut.R, R.fS = R.fS, A.fS = A.fS, cut.S = cut.S, G = G, Age = Age, Cal = Cal, design = design, full = full, no.death = no.death, copula = copula,  method = "BFGS", hessian = TRUE, control=list(maxit=1))
 
 #parameter.pair <- exp(pairle$par)
 
