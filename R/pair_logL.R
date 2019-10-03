@@ -52,7 +52,7 @@ pair.logL <-	function( par, Y.fam, X.fam,  Y.proband, X.proband, Y.R, X.R, Y.S,
   }
 
   for(i in 1:nr){
-    res2 = res2 + loglikR_pch_gene_R(par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(data.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f)
+    res2 = res2 + loglikR_pch_gene_R(par,  cut_F = cut, Y_R = t(as.matrix(Y.R[i,])), X_R = t(as.matrix(X.R[i,])), R.fR = R.fR[[i]], A.fR = A.fR[[i]], cutR = cut.R[i], fgau = gauleg.f)
   }
 
   for(i in 1:ns){
